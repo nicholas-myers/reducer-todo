@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useReducer } from 'react';
+
 import './App.css';
 
+
+const taskReducer = (state, action) => {
+  return state
+}
+
+const initialTask = {
+  taskName: "get groceries",
+  completed: false,
+  taskId: "task1",
+  
+}
+
 function App() {
+
+  const [tasks, setTasks] = useState([initialTask])
+  const [state, dispatch] = useReducer(taskReducer, initialTask)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Tasks</h1>
       </header>
+      {tasks.map(task => {
+        return <p>{task.taskName}</p>
+      })}
     </div>
   );
 }
