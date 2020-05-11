@@ -2,10 +2,13 @@ export const taskReducer = (state, action) => {
   return state;
 };
 
-export const initialTasks = [
-  {
-    taskName: "get groceries",
-    completed: false,
-    taskId: "task1",
-  },
-];
+export const initialTasks = {
+  tasks: [
+    {
+      taskName: "get groceries",
+      completed: false,
+      taskId: "task1",
+    },
+  ],
+
+};
