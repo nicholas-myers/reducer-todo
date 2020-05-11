@@ -1,28 +1,31 @@
 import React, { useState, useReducer } from 'react';
 import { taskReducer, initialTasks } from "./reducers/taskReducer"
-// import initialTasks from "./reducers/taskReducer"
 import './App.css';
 
 
 
 
 function App() {
-  const [newTask, setNewTask] =useState("")
+  const [newtask, setNewTask] =useState("")
   const [state, dispatch] = useReducer(taskReducer, initialTasks)
 
  const captureTask = (e) => {
-    setNewTask(e.target.value)
+   setNewTask(e.target.value) 
   }
+
 
   return (
     <div className="App">
       <header>
         <h1>Tasks</h1>
       </header>
-      <form>
+      <form onSubmit={(event) => { 
+        event.preventDefault()
+        dispatch({ type: "ADD_TASK", payload: `${newtask}`})
+       }}>
         <input 
         type="text"
-        value={state.newTask}
+        value={newtask}
         onChange={captureTask}
         />
         <button>Add Task</button>
