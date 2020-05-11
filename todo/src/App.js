@@ -6,12 +6,8 @@ import './App.css';
 
 
 function App() {
-  const [newtask, setNewTask] =useState("")
+  // const [newTask, setNewTask] =useState("")
   const [state, dispatch] = useReducer(taskReducer, initialTasks)
-
- const captureTask = (e) => {
-   setNewTask(e.target.value) 
-  }
 
 
   return (
@@ -20,15 +16,17 @@ function App() {
         <h1>Tasks</h1>
       </header>
       <form onSubmit={(event) => { 
-        event.preventDefault()
-        dispatch({ type: "ADD_TASK", payload: `${newtask}`})
-       }}>
+        event.preventDefault()}}>
         <input 
         type="text"
-        value={newtask}
-        onChange={captureTask}
+        value={state.taskInput}
+        onChange={(event) => {dispatch({ type: "CAPTURE_TASK", payload: event.target.value})}}
         />
-        <button>Add Task</button>
+        <button
+        onClick={() => {
+          dispatch({ type: "ADD_TASK" })
+        }}
+        >Add Task</button>
       </form>
       <div>
         {state.tasks.map(task => {

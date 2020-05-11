@@ -1,17 +1,23 @@
 export const taskReducer = (state, action) => {
-  const newTasks = initialTasks
-  switch(action.type) {
-  case "ADD_TASK":
-    return {
-      ...state,
-      tasks: [...state.tasks, {
-        taskName: action.payload,
+  switch (action.type) {
+    case "CAPTURE_TASK":
+      return {
+        ...state,
+        taskInput: action.payload
+      }
+    case "ADD_TASK":
+      const newTask = {
+        taskName: state.taskInput,
         completed: false,
         taskId: Date.now()
-      }],
-    }
+      }
+      return {
+        ...state,
+        tasks: [...state.tasks, newTask],
+        taskInput: ""
+      }
     default:
-      return newTasks;
+      return state;
   }
 };
 
@@ -23,4 +29,5 @@ export const initialTasks = {
       taskId: "task1",
     },
   ],
+  taskInput: ""
 };
