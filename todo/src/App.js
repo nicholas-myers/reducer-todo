@@ -42,8 +42,8 @@ function App() {
         <button>Add Task</button>
       </form>
       <div className="tasks">
-        {state.map(task => {
-          return <Task taskName={task.taskName}/>
+        {state.map((task, index) => {
+          return <Task key={task.id} taskName={task.taskName}/>
         })}
       </div>
     </div>
