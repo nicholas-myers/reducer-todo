@@ -78,9 +78,9 @@ x- Write the `case` in your reducer for toggling the completed property
 
 ### STEP 5 - Clearing completed todos
 
-- Build a function that will dispatch an action to filter out any completed todos
-- Invoke this new function when you click on a "Clear completed" button
-- Write the `case` in your reducer for filtering completed todos
+x- Build a function that will dispatch an action to filter out any completed todos
+x- Invoke this new function when you click on a "Clear completed" button
+x- Write the `case` in your reducer for filtering completed todos
 
 ## Stretch Problems
 

@@ -2,6 +2,8 @@ import React, { useState, useReducer } from 'react';
 import { taskReducer, initialTasks } from "./reducers/taskReducer"
 import './App.css';
 
+import Header from "./component/Header"
+import TaskForm from "./component/TaskForm"
 import Task from "./component/Task"
 
 
@@ -31,28 +33,22 @@ function App() {
     dispatch({ type: "TOGGLE_COMPLETED", payload: id })
   }
 
+  //clearCompleted
+  // const clearCompleted = () => {
+  //   dispatch({ type: "CLEAR_COMPLETED" })
+  // }
+
   return (
     <div className="App">
-      <header>
-        <h1>Tasks</h1>
-      </header>
-      <form onSubmit={(event) => { 
-        event.preventDefault()
-        addTask(newTask)}}>
-        <input 
-        type="text"
-        name="taskInput"
-        value={newTask}
-        onChange={captureTask}
-        />
-        <button>Add Task</button>
-        <button onClick={() => dispatch({ type: "CLEAR_COMPLETED"})}>Clear Completed</button>
-      </form>
-      <div className="tasks">
-        {state.tasks.map((task) => {
-          return <Task key={task.id} id={task.id} completed={task.completed} toggleCompleted={toggleCompleted} taskName={task.taskName}/>
-        })}
-      </div>
+      <Header />
+      <section className="content">
+        <TaskForm addTask={addTask} newTask={newTask} captureTask={captureTask} dispatch={dispatch} />
+        <div className="tasks">
+          {state.tasks.map((task) => {
+            return <Task key={task.id} id={task.id} completed={task.completed} toggleCompleted={toggleCompleted} taskName={task.taskName}/>
+          })}
+        </div>
+      </section>
     </div>
   );
 }
