@@ -16,14 +16,15 @@ function App() {
   };
 
   const addTask = (task) => {
-    const newTask = {
+    const newTaskObj = {
       taskName: task,
       completed: false,
       id: Date.now(),
     };
-
-    dispatch({ type: "ADD_TASK", payload: newTask });
-    setNewTask("");
+    if(newTask !== "") {
+      dispatch({ type: "ADD_TASK", payload: newTaskObj });
+      setNewTask("");
+    }
   };
 
   // toggle completed
