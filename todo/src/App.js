@@ -4,7 +4,8 @@ import './App.css';
 
 import Header from "./component/Header"
 import TaskForm from "./component/TaskForm"
-import Task from "./component/Task"
+import TaskList from "./component/TaskList"
+// import Task from "./component/Task"
 
 
 function App() {
@@ -34,20 +35,13 @@ function App() {
   }
 
   //clearCompleted
-  // const clearCompleted = () => {
-  //   dispatch({ type: "CLEAR_COMPLETED" })
-  // }
 
   return (
     <div className="App">
       <Header />
       <section className="content">
-        <TaskForm addTask={addTask} newTask={newTask} captureTask={captureTask} dispatch={dispatch} />
-        <div className="tasks">
-          {state.tasks.map((task) => {
-            return <Task key={task.id} id={task.id} completed={task.completed} toggleCompleted={toggleCompleted} taskName={task.taskName}/>
-          })}
-        </div>
+        <TaskForm addTask={addTask} newTask={newTask} captureTask={captureTask} />
+        <TaskList state={state} toggleCompleted={toggleCompleted}/>
       </section>
     </div>
   );

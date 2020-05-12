@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-export default function TaskForm({ addTask, newTask, captureTask, dispatch }) {
+export default function TaskForm({ addTask, newTask, captureTask }) {
 
   return (
     <form
@@ -18,7 +18,6 @@ export default function TaskForm({ addTask, newTask, captureTask, dispatch }) {
         onChange={captureTask}
       />
       <button>Add Task</button>
-      <button onClick={() => dispatch({ type: "CLEAR_COMPLETED"})}>Clear Completed</button>
     </form>
   );
 }
