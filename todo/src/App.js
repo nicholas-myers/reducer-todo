@@ -28,7 +28,7 @@ function App() {
 
   // toggle completed
   const toggleCompleted = (id) => {
-    console.log(id);
+    // console.log(id);
     dispatch({ type: "TOGGLE_COMPLETED", payload: id });
   };
 
