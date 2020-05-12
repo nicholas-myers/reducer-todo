@@ -25,6 +25,12 @@ function App() {
 
   }
 
+  // toggle completed
+  const toggleCompleted = (id) => {
+    console.log(id)
+    dispatch({ type: "TOGGLE_COMPLETED", payload: id })
+  }
+
   return (
     <div className="App">
       <header>
@@ -40,10 +46,11 @@ function App() {
         onChange={captureTask}
         />
         <button>Add Task</button>
+        <button onClick={() => dispatch({ type: "CLEAR_COMPLETED"})}>Clear Completed</button>
       </form>
       <div className="tasks">
-        {state.map((task, index) => {
-          return <Task key={task.id} taskName={task.taskName}/>
+        {state.tasks.map((task) => {
+          return <Task key={task.id} id={task.id} completed={task.completed} toggleCompleted={toggleCompleted} taskName={task.taskName}/>
         })}
       </div>
     </div>

@@ -1,8 +1,8 @@
 import React from "react"
 
-function Task({taskName}) {
+function Task({taskName, completed, id, toggleCompleted}) {
     return (
-        <div>{taskName}</div>
+        <div onClick={()=> {toggleCompleted(id)}} className={completed === true ? "completed" : ""}>{taskName}</div>
     )
 }
 
