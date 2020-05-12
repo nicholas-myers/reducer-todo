@@ -6,31 +6,35 @@ export const taskReducer = (state, action) => {
         tasks: [...state.tasks, action.payload],
       };
     case "TOGGLE_COMPLETED":
-      const completedTasks = state.tasks.map(task => {
+      const completedTasks = state.tasks.map((task) => {
         if (task.id === action.payload) {
-        task.completed = !task.completed
+          task.completed = !task.completed;
         }
-        return task
-      })
+        return task;
+      });
       return {
         ...state,
-        tasks: completedTasks
-      }
-      case "CLEAR_COMPLETED":
-        const incompleteTasks = state.tasks.filter(task => {
-          if(task.completed === false) {
-            return task
-          }
-        })
-        return {
-          ...state,
-          tasks: incompleteTasks
-        }
+        tasks: completedTasks,
+      };
+    case "CLEAR_COMPLETED":
+      const incompleteTasks = state.tasks.filter((task) => {
+          return task === !task.completed ;
+      });
+      return {
+        ...state,
+        tasks: incompleteTasks,
+      };
     default:
       return state;
   }
 };
 
 export const initialTasks = {
-  tasks: [{ taskName: "example task", completed: false, id: Date.now() }],
+  tasks: [
+    {
+      taskName: "example task",
+      completed: false,
+      id: Date.now(),
+    },
+  ],
 };

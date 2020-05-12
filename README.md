@@ -74,7 +74,7 @@ x- Write the `case` in your reducer for adding a todo (You can create a unique i
 x- Build a function that will dispatch an action to toggle a todo's completed field
 x- Invoke this new function when you click on a todo
 x- Style your todo to somehow show that it is completed (be creative here!)
-- Write the `case` in your reducer for toggling the completed property
+x- Write the `case` in your reducer for toggling the completed property
 
 ### STEP 5 - Clearing completed todos
 
