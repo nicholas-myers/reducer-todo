@@ -1,38 +1,36 @@
-import React, { useState, useReducer } from 'react';
-import { taskReducer, initialTasks } from "./reducers/taskReducer"
-import './App.css';
+import React, { useState, useReducer } from "react";
+import { taskReducer, initialTasks } from "./reducers/taskReducer";
+import "./App.css";
 
-import Header from "./component/Header"
-import TaskForm from "./component/TaskForm"
-import TaskList from "./component/TaskList"
+import Header from "./component/Header";
+import TaskForm from "./component/TaskForm";
+import TaskList from "./component/TaskList";
 // import Task from "./component/Task"
 
-
 function App() {
-  const [newTask, setNewTask] =useState("")
-  const [state, dispatch] = useReducer(taskReducer, initialTasks)
+  const [newTask, setNewTask] = useState("");
+  const [state, dispatch] = useReducer(taskReducer, initialTasks);
 
   const captureTask = (event) => {
-    setNewTask(event.target.value)
-  }
+    setNewTask(event.target.value);
+  };
 
   const addTask = (task) => {
     const newTask = {
       taskName: task,
       completed: false,
-      id: Date.now()
-    }
+      id: Date.now(),
+    };
 
-    dispatch({ type: "ADD_TASK", payload: newTask })
-    setNewTask("")
-
-  }
+    dispatch({ type: "ADD_TASK", payload: newTask });
+    setNewTask("");
+  };
 
   // toggle completed
   const toggleCompleted = (id) => {
-    console.log(id)
-    dispatch({ type: "TOGGLE_COMPLETED", payload: id })
-  }
+    console.log(id);
+    dispatch({ type: "TOGGLE_COMPLETED", payload: id });
+  };
 
   //clearCompleted
 
@@ -40,8 +38,20 @@ function App() {
     <div className="App">
       <Header />
       <section className="content">
-        <TaskForm addTask={addTask} newTask={newTask} captureTask={captureTask} />
-        <TaskList state={state} toggleCompleted={toggleCompleted}/>
+        <TaskForm
+          addTask={addTask}
+          newTask={newTask}
+          captureTask={captureTask}
+        />
+        <TaskList state={state} toggleCompleted={toggleCompleted} />
+        <button
+          onClick={(event) => {
+            event.preventDefault();
+            dispatch({ type: "CLEAR_COMPLETED" })
+          }}
+        >
+          Clear Completed
+        </button>
       </section>
     </div>
   );
