@@ -2,13 +2,28 @@ import React, { useState, useReducer } from 'react';
 import { taskReducer, initialTasks } from "./reducers/taskReducer"
 import './App.css';
 
-
+import Task from "./component/Task"
 
 
 function App() {
-  // const [newTask, setNewTask] =useState("")
+  const [newTask, setNewTask] =useState("")
   const [state, dispatch] = useReducer(taskReducer, initialTasks)
 
+  const captureTask = (event) => {
+    setNewTask(event.target.value)
+  }
+
+  const addTask = (task) => {
+    const newTask = {
+      taskName: task,
+      completed: false,
+      id: Date.now()
+    }
+
+    dispatch({ type: "ADD_TASK", payload: newTask })
+    setNewTask("")
+
+  }
 
   return (
     <div className="App">
@@ -16,21 +31,19 @@ function App() {
         <h1>Tasks</h1>
       </header>
       <form onSubmit={(event) => { 
-        event.preventDefault()}}>
+        event.preventDefault()
+        addTask(newTask)}}>
         <input 
         type="text"
-        value={state.taskInput}
-        onChange={(event) => {dispatch({ type: "CAPTURE_TASK", payload: event.target.value})}}
+        name="taskInput"
+        value={newTask}
+        onChange={captureTask}
         />
-        <button
-        onClick={() => {
-          dispatch({ type: "ADD_TASK" })
-        }}
-        >Add Task</button>
+        <button>Add Task</button>
       </form>
-      <div>
-        {state.tasks.map(task => {
-          return <p key={Date.now()}>{task.taskName}</p>
+      <div className="tasks">
+        {state.map(task => {
+          return <Task taskName={task.taskName}/>
         })}
       </div>
     </div>
