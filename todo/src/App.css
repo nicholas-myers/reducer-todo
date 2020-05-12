@@ -26,6 +26,9 @@ button {
   border-radius: 1rem;
 }
 
+.taskList {
+  width: 100%;
+}
 
 .completed {
   text-decoration: line-through;
