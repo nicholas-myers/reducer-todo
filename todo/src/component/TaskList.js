@@ -4,7 +4,7 @@ import Task from "./Task"
 
 export default function TaskList({ state, toggleCompleted }) {
     return (
-        <div className="tasks">
+        <div className="taskList">
             {state.tasks.map((task) => {
             return <Task key={task.id} id={task.id} completed={task.completed} toggleCompleted={toggleCompleted} taskName={task.taskName}/>
           })}

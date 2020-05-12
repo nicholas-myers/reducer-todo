@@ -33,25 +33,16 @@ function App() {
   };
 
   //clearCompleted
+  const clearCompleted = () => {
+    dispatch({ type: "CLEAR_COMPLETED" });
+  };
 
   return (
     <div className="App">
       <Header />
+      <TaskForm addTask={addTask} newTask={newTask} captureTask={captureTask} clearCompleted={clearCompleted}/>
       <section className="content">
-        <TaskForm
-          addTask={addTask}
-          newTask={newTask}
-          captureTask={captureTask}
-        />
         <TaskList state={state} toggleCompleted={toggleCompleted} />
-        <button
-          onClick={(event) => {
-            event.preventDefault();
-            dispatch({ type: "CLEAR_COMPLETED" })
-          }}
-        >
-          Clear Completed
-        </button>
       </section>
     </div>
   );

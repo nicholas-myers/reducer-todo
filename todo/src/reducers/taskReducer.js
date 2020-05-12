@@ -18,9 +18,7 @@ export const taskReducer = (state, action) => {
       };
     case "CLEAR_COMPLETED":
       const incompleteTasks = state.tasks.filter((task) => {
-          if(task.completed === false) {
-            return task
-          }
+          return task.completed === false
       });
       return {
         ...state,

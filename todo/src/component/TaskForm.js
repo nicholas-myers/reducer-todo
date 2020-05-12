@@ -2,12 +2,20 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledTaskForm = styled.form`
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
+  padding: 5% 3%;
+  font-size: 2rem;
+  box-shadow: inset 0 0 20px 10px black;
+  input {
+      font-size: 2rem;
+      width: 40%;
+  }
 `;
 
-export default function TaskForm({ addTask, newTask, captureTask }) {
+
+export default function TaskForm({ addTask, newTask, captureTask,clearCompleted }) {
   return (
     <StyledTaskForm
       onSubmit={(event) => {
@@ -23,6 +31,9 @@ export default function TaskForm({ addTask, newTask, captureTask }) {
         onChange={captureTask}
       />
       <button>Add Task</button>
+      <button
+          onClick={clearCompleted}
+        >Clear Completed</button>
     </StyledTaskForm>
   );
 }

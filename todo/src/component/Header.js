@@ -11,10 +11,18 @@ const StyledHeader = styled.header`
   height: 15vh;
 `;
 
+const Title = styled.h1`
+  font-size: 4rem;
+  text-shadow: 0 1px 20px gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export default function Header() {
   return (
     <StyledHeader>
-      <h1>Tasks</h1>
+      <Title>Tasks</Title>
     </StyledHeader>
   );
 }
